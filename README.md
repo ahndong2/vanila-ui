@@ -1,4 +1,4 @@
-# webpack-typescript-starter
+# Vanila-ui
 
 ## Scripts
 

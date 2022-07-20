@@ -1,8 +1,9 @@
-import { ViewPortSize } from './state';
+import { AccordionUnit, ViewPortSize } from './state';
 
 export type $target = Element | HTMLElement | NodeListOf<Element> | any;
 export interface $state {
   viewport?: ViewPortSize;
+  accordion?: AccordionUnit[];
 }
 export interface $events {
   subscribe?: () => {};

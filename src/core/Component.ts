@@ -25,9 +25,10 @@ export class Component {
   setEvent() {}
   setState(newState: $state) {
     this.$state = { ...this.$state, ...newState };
+    console.log(this.$state);
     this.render();
   }
-  addEvent(eventType: Event, selector: string, callback: (e: Event) => {}) {
+  addEvent(eventType: string, selector: string, callback: any) {
     const children = [...this.$target.querySelectorAll(selector)];
     const isTarget = (target: Element) => children.includes(target) || target.closest(selector);
     this.$target.addEventListener(eventType, (event: any) => {
