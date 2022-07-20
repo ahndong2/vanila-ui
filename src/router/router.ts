@@ -1,7 +1,7 @@
-import { Route } from '@types';
+import { $target } from '@types';
 import { routes } from '@/constants';
 
-export const router = async () => {
+export const router = async (target?: $target) => {
   const potentialMatches = routes.map((route) => {
     return {
       route: route,
@@ -18,12 +18,7 @@ export const router = async () => {
     };
   }
 
-  // 활성화된 view 담기
-  const view = new match.route.view();
-
-  // #app 엘리먼트에 활성화된 view의 html 삽입
-  console.log(view);
-  // document.querySelector('#app').innerHTML = await view.getHtml();
+  new match.route.view(target);
 };
 
 export const navigateTo = (url: string): void => {

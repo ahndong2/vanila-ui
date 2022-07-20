@@ -6,7 +6,7 @@ export class Component {
   $state: $state;
 
   constructor($target: $target, $props?: any) {
-    this.$target = $target;
+    this.$target = $target || document.querySelector('#app');
     this.$props = $props;
     this.setup();
     this.setEvent();
@@ -15,9 +15,10 @@ export class Component {
   setup() {}
   mounted() {}
   template() {
-    return '';
+    return ``;
   }
   render() {
+    console.log('this.$target : ', this.$target);
     this.$target.innerHTML = this.template();
     this.mounted();
   }

@@ -1,32 +1,41 @@
 import { Component } from '@/core';
-import { $target, $state, Route } from '@types';
-import { getViewport } from '@/utils';
-import { routes } from '@/constants';
-
+import { $target } from '@types';
+import { Nav, Main } from '@/components';
+import { router, navigateTo } from '@/router';
 export default class App extends Component {
   $target: $target;
-  $state: $state;
-  $routes: Route[];
+  $main: $target;
 
-  setup() {
-    this.$state = {
-      viewport: getViewport(),
-    };
-    this.$routes = routes;
+  constructor(target: $target) {
+    super(target);
+    this.$target = target;
   }
 
+  setup() {}
+
   template() {
-    return `
-      <Nav></Nav>
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
-    `;
+    const nav = new Nav(this.$target).template();
+    const main = new Main(this.$target).template();
+    return `${nav}${main}`;
   }
 
   init() {
-    console.log(this.$target);
-    console.log(this.$state);
-    console.log(this.$routes);
+    this.$main = document.querySelector('#main');
+
+    window.addEventListener('popstate', () => {
+      router(this.$main);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.body.addEventListener('click', (e: Event) => {
+        const target = e.target as HTMLElement;
+        if (target.matches('[data-link]')) {
+          e.preventDefault();
+          navigateTo(target.href);
+        }
+      });
+
+      router(this.$main);
+    });
   }
 }

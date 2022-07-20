@@ -1,7 +1,9 @@
 import { Route } from '@types';
-import { Accordion } from '@/components';
+import { Home, Accordion, Tabs, VirtualizedList } from '@/components';
 
 export const routes: Route[] = [
-  { path: '/', name: '', view: () => console.log('Viewing Dashboard') },
+  { path: '/', name: 'Home', view: Home },
   { path: '/accordion', name: 'Accordion', view: Accordion },
+  { path: '/tabs', name: 'Tabs', view: Tabs },
+  { path: '/virtualscroll', name: 'VirtualScroll', view: VirtualizedList },
 ];

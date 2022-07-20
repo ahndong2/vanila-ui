@@ -1,8 +1,11 @@
 import { Component } from '@/core';
-export class Tabs extends Component {
+
+export class Home extends Component {
   template() {
     return `
-    Tabs
+      <div>
+        Vanila.js Component
+      </div>
     `;
   }
 

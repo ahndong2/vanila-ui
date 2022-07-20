@@ -19,5 +19,6 @@ export const webpackConfigDevServer = (
     // watchContentBase: true,
     https: false,
     port: 8080,
+    historyApiFallback: true,
   };
 };

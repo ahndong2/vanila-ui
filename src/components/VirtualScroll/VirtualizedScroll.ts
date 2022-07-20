@@ -1,8 +1,8 @@
 import { Component } from '@/core';
-export class Tabs extends Component {
+export class VirtualizedList extends Component {
   template() {
     return `
-    Tabs
+    VirtualizedList
     `;
   }
 
