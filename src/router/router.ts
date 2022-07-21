@@ -1,7 +1,7 @@
-import { $target } from '@types';
+import { $state, $target } from '@types';
 import { routes } from '@/constants';
 
-export const router = async (target?: $target) => {
+export const router = async (target?: $target, state?: $state) => {
   const potentialMatches = routes.map((route) => {
     return {
       route: route,
@@ -18,7 +18,7 @@ export const router = async (target?: $target) => {
     };
   }
 
-  new match.route.view(target);
+  new match.route.view(target, state);
 };
 
 export const navigateTo = (url: string): void => {

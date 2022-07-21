@@ -1,6 +1,7 @@
 import { Component } from '@/core';
-import { $target } from '@types';
-import { Nav, Main } from '@/components';
+import { STATE } from '@/constants';
+import { $target, $state } from '@types';
+import { Nav, Main } from '@/pages';
 import { router, navigateTo } from '@/router';
 export default class App extends Component {
   $target: $target;
@@ -9,12 +10,16 @@ export default class App extends Component {
   constructor(target: $target) {
     super(target);
     this.$target = target;
+    this.init();
   }
 
-  setup() {}
+  setup() {
+    this.$state = STATE;
+    console.log(this.$state);
+  }
 
   template() {
-    const nav = new Nav(this.$target).template();
+    const nav = new Nav(this.$target, this.$state).template();
     const main = new Main(this.$target).template();
     return `${nav}${main}`;
   }
@@ -23,7 +28,7 @@ export default class App extends Component {
     this.$main = document.querySelector('#main');
 
     window.addEventListener('popstate', () => {
-      router(this.$main);
+      router(this.$main, this.$state);
     });
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -35,7 +40,7 @@ export default class App extends Component {
         }
       });
 
-      router(this.$main);
+      router(this.$main, this.$state);
     });
   }
 }

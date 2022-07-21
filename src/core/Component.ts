@@ -5,9 +5,10 @@ export class Component {
   $props: any;
   $state: $state;
 
-  constructor($target: $target, $props?: any) {
+  constructor($target: $target, $state?: $state) {
     this.$target = $target || document.querySelector('#app');
-    this.$props = $props;
+    // this.$props = $props;
+    this.$state = $state;
     this.setup();
     this.setEvent();
     this.render();
@@ -18,14 +19,12 @@ export class Component {
     return ``;
   }
   render() {
-    console.log('this.$target : ', this.$target);
     this.$target.innerHTML = this.template();
     this.mounted();
   }
   setEvent() {}
   setState(newState: $state) {
     this.$state = { ...this.$state, ...newState };
-    console.log(this.$state);
     this.render();
   }
   addEvent(eventType: string, selector: string, callback: any) {
