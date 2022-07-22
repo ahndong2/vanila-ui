@@ -37,6 +37,8 @@ export class AccordionPage extends Component {
           </ul>`,
         },
       ],
+      headerStyle: ``,
+      bodyStyle: ``,
     });
   }
 }

@@ -1,4 +1,4 @@
-import { $state, $target } from '@types';
+import { $target } from '@types';
 import { routes } from '@/constants';
 
 export const router = async (target?: $target) => {

@@ -1,11 +1,10 @@
-import { $target, $state } from '@types';
+import { $target } from '@types';
 
 export class Component {
   $target: $target;
   $props: any;
   $state: any;
 
-  // constructor($target: $target, $state?: $state) {
   constructor($target: $target, $props?: any) {
     this.$target = $target || document.querySelector('#app');
     this.$props = $props;
@@ -24,7 +23,7 @@ export class Component {
   }
   afterRender() {}
   setEvent() {}
-  setState(newState: $state) {
+  setState(newState: any) {
     this.$state = { ...this.$state, ...newState };
     this.render();
   }

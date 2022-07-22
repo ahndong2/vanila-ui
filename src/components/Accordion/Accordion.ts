@@ -3,7 +3,8 @@ import { Panel } from '@types';
 
 export class Accordion extends Component {
   setup() {
-    this.$state = this.$props;
+    const { accordion } = this.$props;
+    this.$state = accordion;
   }
   template() {
     return `

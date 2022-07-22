@@ -2,7 +2,8 @@ import { Component } from '@/core';
 import { TabData } from '@types';
 export class Tabs extends Component {
   setup() {
-    this.$state = this.$props;
+    const { activeTab, tabData } = this.$props;
+    this.$state = { activeTab, tabData };
   }
   template() {
     const { activeTab, tabData } = this.$state;
