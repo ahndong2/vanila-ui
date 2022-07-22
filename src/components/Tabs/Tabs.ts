@@ -1,32 +1,29 @@
 import { Component } from '@/core';
-import { LabelValue } from '@types';
+import { TabData } from '@types';
 export class Tabs extends Component {
+  setup() {
+    this.$state = this.$props;
+  }
   template() {
-    const { activeTab, tabList } = this.$state.tabs;
+    const { activeTab, tabData } = this.$state;
     return `
-    <div class="tabs">
+    <div class="tabs" data-activeTab=${activeTab}>
       <div class="tabs__list">
-        ${tabList
-          .map((v: LabelValue) => {
+        ${tabData
+          .map((v: TabData) => {
             return `
-          <div class="tab tab_${v.value}">
-            <button class="tabs__link">${v.label}</button>
+          <div class="tab" data-value=${v.value}>
+            <button class="tabs__link">${v.title}</button>
           </div>
           `;
           })
           .join(' ')}
       </div>
       
-      <div id="tab_1" class="tab_panel">
-        <p>A system to help you move from configuration management to application management across your hybrid cloud estate - through sharable, reusable, tiny applications called Charmed Operators.</p>
-      </div>
-
-      <div id="tab_2" class="tab_panel">
-        <p>A set of tools to help you write Charmed Operators and to package them as Charms.</p>
-      </div>
-
-      <div id="tab_3" class="tab_panel">
-        <p>A repository for charms - from Observability to Data to Identity and more.</p>
+      <div class="tab_panel">
+          <div class="tab_panel_item">
+            ${tabData.find((t: TabData) => t.value === activeTab).content}
+          </div>
       </div>
     </div>
     `;
@@ -34,13 +31,15 @@ export class Tabs extends Component {
 
   setEvent() {
     this.addEvent('click', '.tab', (e: Event) => {
+      e.preventDefault();
       const target = e.target as HTMLElement;
-      const idx = Number(target.classList[1].split('_')[1]);
-      const tabs = JSON.parse(JSON.stringify(this.$state.tabs));
-      tabs[idx].activeTab = idx;
+      const value = (target.closest('.tab') as HTMLDivElement).dataset['value'];
+
+      const tabs = JSON.parse(JSON.stringify(this.$state));
+      tabs.activeTab = value;
 
       this.setState({
-        tabs: tabs,
+        ...tabs,
       });
     });
   }

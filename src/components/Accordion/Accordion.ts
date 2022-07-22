@@ -2,13 +2,16 @@ import { Component } from '@/core';
 import { Panel } from '@types';
 
 export class Accordion extends Component {
+  setup() {
+    this.$state = this.$props;
+  }
   template() {
     return `
       <section class="accordion">
         ${this.$state.accordion
           .map((v: Panel, i: number) => {
             const className = v.active ? 'expended' : '';
-            return `<div class="menu menu_${i}">
+            return `<div class="menu" data-index=${i}>
                         <div class="header">
                             <div class="title">${v.title}</div>
                             <span class="icon ${className}">
@@ -29,8 +32,9 @@ export class Accordion extends Component {
 
   setEvent() {
     this.addEvent('click', '.header', (e: Event) => {
+      e.preventDefault();
       const target = e.target as HTMLElement;
-      const idx = Number(target.closest('.menu').classList[1].split('_')[1]);
+      const idx = Number((target.closest('.menu') as HTMLDivElement).dataset['index']);
       const accordionArr = JSON.parse(JSON.stringify(this.$state.accordion));
       accordionArr[idx].active = !accordionArr[idx].active;
 

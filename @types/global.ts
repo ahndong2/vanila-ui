@@ -14,13 +14,14 @@ export interface Panel {
   content: string;
   active?: boolean;
 }
-export interface LabelValue {
-  label?: string;
+export interface TabData {
+  title: string;
+  content: string;
   value?: number | string;
 }
 export interface Tabs {
   activeTab: number | string;
-  tabList: LabelValue[];
+  tabList: TabData[];
 }
 
 export interface $state {

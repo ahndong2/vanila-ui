@@ -1,7 +1,7 @@
 import { $state, $target } from '@types';
 import { routes } from '@/constants';
 
-export const router = async (target?: $target, state?: $state) => {
+export const router = async (target?: $target) => {
   const potentialMatches = routes.map((route) => {
     return {
       route: route,
@@ -18,10 +18,10 @@ export const router = async (target?: $target, state?: $state) => {
     };
   }
 
-  new match.route.view(target, state);
+  new match.route.view(target);
 };
 
-export const navigateTo = (url: string): void => {
+export const navigateTo = (url: string, target?: $target): void => {
   window.history.pushState(null, null, url);
-  router();
+  router(target);
 };

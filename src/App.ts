@@ -1,8 +1,8 @@
 import { Component } from '@/core';
-import { STATE } from '@/constants';
-import { $target, $state } from '@types';
+import { $target } from '@types';
 import { Nav, Main } from '@/pages';
 import { router, navigateTo } from '@/router';
+import { routes } from './constants';
 export default class App extends Component {
   $target: $target;
   $main: $target;
@@ -13,13 +13,10 @@ export default class App extends Component {
     this.init();
   }
 
-  setup() {
-    this.$state = STATE;
-    console.log(this.$state);
-  }
+  setup() {}
 
   template() {
-    const nav = new Nav(this.$target, this.$state).template();
+    const nav = new Nav(this.$target, { routes: routes }).template();
     const main = new Main(this.$target).template();
     return `${nav}${main}`;
   }
@@ -28,19 +25,19 @@ export default class App extends Component {
     this.$main = document.querySelector('#main');
 
     window.addEventListener('popstate', () => {
-      router(this.$main, this.$state);
+      router(this.$main);
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      document.body.addEventListener('click', (e: Event) => {
-        const target = e.target as HTMLElement;
+      document.body.addEventListener('click', (e: MouseEvent) => {
+        const target = e.target as HTMLAnchorElement;
         if (target.matches('[data-link]')) {
           e.preventDefault();
-          navigateTo(target.href);
+          navigateTo(target.href, this.$main);
         }
       });
 
-      router(this.$main, this.$state);
+      router(this.$main);
     });
   }
 }

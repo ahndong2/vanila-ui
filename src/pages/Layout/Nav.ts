@@ -5,9 +5,9 @@ export class Nav extends Component {
   template() {
     return `
     <nav class="navbar">
-      ${this.$state.routes
+      ${this.$props.routes
         .map((v: Route) => {
-          return `<a href="${v.path}">${v.name}</a>`;
+          return `<a href="${v.path}" data-link>${v.name}</a>`;
         })
         .join(' ')}
     </nav>
