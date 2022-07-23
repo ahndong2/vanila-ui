@@ -22,7 +22,7 @@ export default class App extends Component {
   }
 
   init() {
-    this.$main = document.querySelector('#main');
+    this.$main = document.querySelector('#content');
 
     window.addEventListener('popstate', () => {
       router(this.$main);
@@ -33,6 +33,7 @@ export default class App extends Component {
         const target = e.target as HTMLAnchorElement;
         if (target.matches('[data-link]')) {
           e.preventDefault();
+
           navigateTo(target.href, this.$main);
         }
       });

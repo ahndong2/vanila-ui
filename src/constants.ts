@@ -1,9 +1,9 @@
 import { Route } from '@types';
-import { Home, AccordionPage, TabsPage, VirtualScrollPage } from '@/pages';
+import { AboutMe, AccordionPage, TabsPage, VirtualListPage } from '@/pages';
 
 export const routes: Route[] = [
-  { path: '/', name: 'Home', view: Home },
-  { path: '/accordion', name: 'accordion', view: AccordionPage },
-  { path: '/tabs', name: 'tabs', view: TabsPage },
-  { path: '/virtualscroll', name: 'virtualscroll', view: VirtualScrollPage },
+  { path: '/accordion', name: 'Accordion', view: AccordionPage },
+  { path: '/tabs', name: 'Tabs', view: TabsPage },
+  { path: '/virtuallist', name: 'Virtual List', view: VirtualListPage },
+  { path: '/', name: 'About', view: AboutMe },
 ];

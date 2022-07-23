@@ -16,18 +16,33 @@
   background-color: $color-white;
 }
 
-.accordion .menu .icon{
-  width: 1em;
-  height: 1em;
-  display: inline-block;
-  fill: currentcolor;
-  flex-shrink: 0;
-  font-size: 2.1875rem;
-  box-sizing: content-box;
-  cursor: pointer;
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 4px;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  padding: 16px;
-  margin: 4px 0px;
-}
+
+main{display:flex;position:relative;height:100vh;}
+nav{width:200px;border-right:1px solid #eee;}
+nav h1{padding:20px 0;text-align:center;}
+nav a{display:block;padding:10px 20px;color:inherit;}
+nav a.active{color:#48aaf9;}
+section{flex:1;padding:20px 40px 40px;background:#f7f7f7;}
+.panel{border:1px solid #eee;background:#fff;}
+.panel-header{padding:16px 20px;border-bottom:1px solid #eee;}
+.panel-header h2{font-size:20px;}
+.panel-content{padding:16px 20px;}
+.code{padding:16px 20px;margin-top:20px;background:#000;color:#fff;}
+
+.user{display:flex;}
+.user-img img{width:200px;}
+.user-text{padding-left:20px;}
+
+.user .link{}
+.user .link a+a{margin-left:4px;}
+
+
+.accordion-item + .accordion-item{border-top:1px solid #eee;}
+.accordion-header{padding:16px;cursor:pointer;}
+.accordion-header .icon{ width:20px;height:20px;vertical-align:sub;display:inline-block;}
+.accordion-content{padding:8px 16px 16px;}
+
+.tab-nav{display:flex;}
+.tab-item{padding:12px 16px;font-size:16px;font-weight:bold;text-align:center;box-sizing:border-box;cursor:pointer;}
+.tab-item.active{color:#48aaf9;border-bottom:2px solid #48aaf9;}
+.tab-content{padding:20px;}

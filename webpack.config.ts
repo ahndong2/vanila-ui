@@ -4,7 +4,7 @@ import {
   webpackConfigModules,
   webpackConfigDevServer,
   webpackConfigPlugins,
-  webpackConfigOptimization
+  webpackConfigOptimization,
 } from './build';
 
 const PACKAGE_JSON = require('./package.json');
@@ -18,14 +18,14 @@ const config: webpack.ConfigurationFactory = (_, args) => {
     entry: {
       vendor: './src/vendor.ts',
       polyfills: './src/polyfills.ts',
-      bundle: './src/index.ts'
+      bundle: './src/index.ts',
     },
     resolve: {
       extensions: ['.tsx', '.ts', '.js'],
       alias: {
         '@': path.resolve(__dirname, 'src'),
-        '~': path.resolve(__dirname, 'src/assets')
-      }
+        '~': path.resolve(__dirname, 'src/assets'),
+      },
     },
     output: {
       filename: IS_DEV_MODE ? 'js/[name].js' : 'js/[name].[hash].js',
@@ -34,7 +34,7 @@ const config: webpack.ConfigurationFactory = (_, args) => {
     module: webpackConfigModules(_, args),
     devServer: webpackConfigDevServer(_, args),
     plugins: webpackConfigPlugins(_, args, PACKAGE_JSON),
-    optimization: webpackConfigOptimization(_, args)
+    optimization: webpackConfigOptimization(_, args),
   };
 };
 

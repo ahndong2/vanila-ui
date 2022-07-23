@@ -4,8 +4,8 @@ export class Main extends Component {
   setup() {}
   template() {
     return `
-    <main id="main">
-    </main>
+    <section id="content">
+    </section>
     `;
   }
 }

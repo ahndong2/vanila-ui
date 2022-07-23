@@ -4,17 +4,17 @@ import { Panel } from '@types';
 export class Accordion extends Component {
   setup() {
     const { accordion } = this.$props;
-    this.$state = accordion;
+    this.$state = { accordion };
   }
   template() {
     return `
-      <section class="accordion">
+      <div class="accordion">
         ${this.$state.accordion
           .map((v: Panel, i: number) => {
             const className = v.active ? 'expended' : '';
-            return `<div class="menu" data-index=${i}>
-                        <div class="header">
-                            <div class="title">${v.title}</div>
+            return `<div class="accordion-item" data-index=${i}>
+                        <div class="accordion-header" role="button">
+                            <strong>${v.title}</strong>
                             <span class="icon ${className}">
                             ${
                               v.active
@@ -23,19 +23,19 @@ export class Accordion extends Component {
                             }
                             </span>
                         </div>
-                        ${v.active ? `<div class="content">${v.content}</div>` : ''}
+                        ${v.active ? `<div class="accordion-content">${v.content}</div>` : ''}
                     </div>`;
           })
           .join('')}
-        </section>
+        </div>
     `;
   }
 
   setEvent() {
-    this.addEvent('click', '.header', (e: Event) => {
+    this.addEvent('click', '.accordion-header', (e: Event) => {
       e.preventDefault();
       const target = e.target as HTMLElement;
-      const idx = Number((target.closest('.menu') as HTMLDivElement).dataset['index']);
+      const idx = Number((target.closest('.accordion-item') as HTMLDivElement).dataset['index']);
       const accordionArr = JSON.parse(JSON.stringify(this.$state.accordion));
       accordionArr[idx].active = !accordionArr[idx].active;
 

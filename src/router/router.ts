@@ -17,8 +17,17 @@ export const router = async (target?: $target) => {
       isMatch: true,
     };
   }
-
+  // main view change
   new match.route.view(target);
+
+  // nav active Class
+  const navList = document.querySelectorAll('nav a');
+  navList.forEach((v: HTMLDivElement) => {
+    v.classList.remove('active');
+    if (v.dataset['path'] === location.pathname) {
+      v.classList.add('active');
+    }
+  });
 };
 
 export const navigateTo = (url: string, target?: $target): void => {

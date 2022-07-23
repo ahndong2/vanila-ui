@@ -4,10 +4,11 @@ import { Route } from '@types';
 export class Nav extends Component {
   template() {
     return `
-    <nav class="navbar">
+    <nav>
+      <h1>AhnDongJun</h1>
       ${this.$props.routes
         .map((v: Route) => {
-          return `<a href="${v.path}" data-link>${v.name}</a>`;
+          return `<a href="${v.path}" data-link data-path="${v.path}">${v.name}</a>`;
         })
         .join(' ')}
     </nav>

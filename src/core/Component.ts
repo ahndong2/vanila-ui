@@ -19,7 +19,12 @@ export class Component {
     return ``;
   }
   render() {
-    this.$target.innerHTML = this.template();
+    const template = this.template();
+    if (typeof template === 'string') {
+      this.$target.innerHTML = this.template();
+    } else {
+      this.$target.appendChild(template);
+    }
   }
   afterRender() {}
   setEvent() {}

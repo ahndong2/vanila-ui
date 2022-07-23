@@ -1,5 +1,5 @@
 export * from './Layout';
-export * from './Home';
+export * from './AboutMe';
 export * from './AccordionPage';
 export * from './TabsPage';
-export * from './VirtualScrollPage';
+export * from './VirtualListPage';
