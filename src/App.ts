@@ -3,6 +3,7 @@ import { $target } from '@types';
 import { Nav, Main } from '@/pages';
 import { router, navigateTo } from '@/router';
 import { routes } from './constants';
+
 export default class App extends Component {
   $target: $target;
   $main: $target;

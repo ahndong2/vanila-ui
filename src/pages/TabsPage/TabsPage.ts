@@ -24,7 +24,7 @@ export class TabsPage extends Component {
                     value: 'tab_1',
                     content: '<span>
                                 Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. 
-                                Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. 
+                                Integer ut neque. Vivamus nisi metus, molestie vel, gravida in nunc. 
                                 Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. 
                                 Vestibulum a velit eu ante scelerisque vulputate.
                               </span>',
@@ -34,8 +34,9 @@ export class TabsPage extends Component {
                     value: 'tab_2',
                     content: '<span>
                                 Sed non urna. Donec et ante. Phasellus eu ligula. 
-                                Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, 
-                                faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna.
+                                Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, 
+                                mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. 
+                                Vivamus non quam. In suscipit faucibus urna.
                               </span>',
                   },
                   {

@@ -47,7 +47,7 @@ export class VirtualListPage extends Component {
       renderRow: function (row: number) {
         const el = document.createElement('div');
         el.innerHTML = 'Row Number ' + row;
-        el.style.border = '1px solid black';
+        el.style.borderBottom = '1px solid black';
         el.style.textAlign = 'center';
         el.style.width = '280px';
         return el;
