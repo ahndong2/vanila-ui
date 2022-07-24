@@ -2,14 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
-    "typeRoots": [
-      "./node_modules/@types",
-      "@types"
-    ],
+    "typeRoots": ["./node_modules/@types", "@types"],
     "outDir": "./dist/",
     "sourceMap": true,
     "noImplicitAny": true,
@@ -18,11 +13,7 @@
     "moduleResolution": "node",
     "jsx": "react",
     "allowJs": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": [
-    "./src/**/*",
-    "@types/**/*",
-    "./tests/**/*"
-  ]
+  "include": ["./src/**/*", "@types/**/*", "./tests/**/*"]
 }

@@ -1,5 +1,6 @@
 import { Component } from '@/core';
-import Adj from '~/images/adj.jpg';
+// import Adj from '~/images/adj.jpg';
+const Adj = require('~/images/adj.jpg');
 export class AboutMe extends Component {
   template() {
     const years = new Date().getFullYear() - 2015;

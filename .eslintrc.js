@@ -34,6 +34,7 @@ module.exports = {
     '@typescript-eslint/no-untyped-public-signature': ['off'],
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
     '@typescript-eslint/ban-types': ['off'],
+    '@typescript-eslint/no-var-requires': ['off'],
   },
   overrides: [
     {

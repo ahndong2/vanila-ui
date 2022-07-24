@@ -10,8 +10,8 @@ const typescript = (_: boolean): webpack.RuleSetRule => {
     exclude: /node_modules/,
     options: {
       transpileOnly: true,
-      happyPackMode: true
-    }
+      happyPackMode: true,
+    },
   };
 };
 
@@ -20,22 +20,22 @@ const scss = (IS_DEV_MODE: boolean): webpack.RuleSetRule => {
     test: /\.s[ac]ss$/i,
     use: [
       IS_DEV_MODE
-      ? 'style-loader'
-      : {
-        loader: MiniCssExtractPlugin.loader,
-        options: {
-          publicPath: relativePath('..'),
-          hmr: IS_DEV_MODE,
-        },
-      },
+        ? 'style-loader'
+        : {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: relativePath('..'),
+              hmr: IS_DEV_MODE,
+            },
+          },
       'css-loader',
-      'sass-loader'
+      'sass-loader',
     ],
-    exclude: /node_modules/
+    exclude: /node_modules/,
   };
 };
 
-const images = (IS_DEV_MODE: boolean, limit: number = 10): webpack.RuleSetRule => {
+const images = (IS_DEV_MODE: boolean, limit = 10): webpack.RuleSetRule => {
   return {
     test: /\.(png|svg|jpe?g|gif)$/,
     use: [
@@ -44,10 +44,10 @@ const images = (IS_DEV_MODE: boolean, limit: number = 10): webpack.RuleSetRule =
         options: {
           outputPath: 'images/',
           name: nameByENV(IS_DEV_MODE),
-          limit: 1000 * limit // 10KB
-        }
-      }
-    ]
+          limit: 1000 * limit, // 10KB
+        },
+      },
+    ],
   };
 };
 
@@ -60,9 +60,9 @@ const fonts = (IS_DEV_MODE: boolean): webpack.RuleSetRule => {
         options: {
           outputPath: 'fonts/',
           name: nameByENV(IS_DEV_MODE),
-        }
-      }
-    ]
+        },
+      },
+    ],
   };
 };
 
@@ -74,7 +74,7 @@ export const webpackConfigModules = (_: ENV, args: webpack.CliConfigOptions): we
       typescript(IS_DEV_MODE),
       scss(IS_DEV_MODE),
       images(IS_DEV_MODE, 10),
-      fonts(IS_DEV_MODE)
-    ]
+      fonts(IS_DEV_MODE),
+    ],
   };
 };
