@@ -1,7 +1,8 @@
 import { $target } from '@types';
 import { routes } from '@/constants';
+const hljs = require('highlight.js');
 
-export const router = async (target?: $target) => {
+export const router = async (target?: $target): Promise<void> => {
   const potentialMatches = routes.map((route) => {
     return {
       route: route,
@@ -19,6 +20,10 @@ export const router = async (target?: $target) => {
   }
   // main view change
   new match.route.view(target);
+  // main resize
+  const scrollHeight = target.querySelector('.panel').scrollHeight + 60;
+  console.log(`${scrollHeight}px`);
+  target.style.height = `${scrollHeight}px`;
 
   // nav active Class
   const navList = document.querySelectorAll('nav a');
@@ -27,6 +32,10 @@ export const router = async (target?: $target) => {
     if (v.dataset['path'] === location.pathname) {
       v.classList.add('active');
     }
+  });
+  // code block
+  document.querySelectorAll('div.code').forEach((el) => {
+    hljs.highlightElement(el);
   });
 };
 

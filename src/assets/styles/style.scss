@@ -27,8 +27,8 @@ section{flex:1;padding:20px 40px 40px;background:#f7f7f7;}
 .panel-header{padding:16px 20px;border-bottom:1px solid #eee;}
 .panel-header h2{font-size:20px;}
 .panel-content{padding:16px 20px;border-bottom:1px solid #eee;}
-.code{padding:16px 20px;margin:20px;background:#000;color:#fff;border-radius:16px;font-weight:bold;}
-
+// .code{padding:16px 20px;margin:20px;background:#000;color:#fff;border-radius:16px;font-weight:bold;}
+div.code{white-space: pre;}
 .user{display:flex;}
 .user-img img{width:200px;}
 .user-text{padding-left:20px;}
