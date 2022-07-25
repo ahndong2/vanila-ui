@@ -11,29 +11,38 @@ export class AccordionPage extends Component {
           <div class="component"></div>
         </div>
         <div class="code">
+          import { Component } from '@/core';
           import { Accordion } from '@/components';
 
-          afterRender() {
-            const basic = document.querySelector('.component');
-            new Accordion(basic, {
-              accordion: [
-                {
-                  title: 'title1',
-                  content: '...',
-                  active: true,
-                },
-                {
-                  title: 'title2',
-                  content: '...',
-                },
-                {
-                  title: 'title3',
-                  content: '...',
-                },
-              ],
-              headerStyle: '',
-              bodyStyle: '',
-            });
+          export class AccordionPage extends Component {
+            template() {
+              const component = document.createElement('div');
+              component.classList.add('component');
+              return component;
+            }
+
+            afterRender() {
+              const basic = document.querySelector('.component');
+              new Accordion(basic, {
+                accordion: [
+                  {
+                    title: 'title1',
+                    content: '...',
+                    active: true,
+                  },
+                  {
+                    title: 'title2',
+                    content: '...',
+                  },
+                  {
+                    title: 'title3',
+                    content: '...',
+                  },
+                ],
+                headerStyle: '',
+                bodyStyle: '',
+              });
+            }
           }
         </div>
       </div>

@@ -1,5 +1,5 @@
-import { Tabs } from '@/components';
 import { Component } from '@/core';
+import { Tabs } from '@/components';
 export class TabsPage extends Component {
   template() {
     return `
@@ -11,30 +11,38 @@ export class TabsPage extends Component {
           <div class="component"></div>
         </div>
         <div class="code">
+          import { Component } from '@/core';
           import { Tabs } from '@/components';
 
-          afterRender() {
-            const target = document.querySelector('.component');
-            new Tabs(target, {
-              activeTab: 'tab_1',
-              tabData: [
-                {
-                  title: 'title1',
-                  value: 'tab_1',
-                  content: '...',
-                },
-                {
-                  title: 'title2',
-                  value: 'tab_2',
-                  content: '...',
-                },
-                {
-                  title: 'title3',
-                  value: 'tab_3',
-                  content: '...',
-                },
-              ],
-            });
+          export class TabsPage extends Component {
+            template() {
+              const component = document.createElement('div');
+              component.classList.add('component');
+              return component;
+            }
+            afterRender() {
+              const target = document.querySelector('.component');
+              new Tabs(target, {
+                activeTab: 'tab_1',
+                tabData: [
+                  {
+                    title: 'title1',
+                    value: 'tab_1',
+                    content: '...',
+                  },
+                  {
+                    title: 'title2',
+                    value: 'tab_2',
+                    content: '...',
+                  },
+                  {
+                    title: 'title3',
+                    value: 'tab_3',
+                    content: '...',
+                  },
+                ],
+              });
+            }
           }
         </div>
       </div>
